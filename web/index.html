@@ -6,10 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mun elokuvakirjasto</title>
   </head>
-  <body>
+  <body ng-app="MovieBase">
     <h1>Hello, world!</h1>
-    <a href="https://fierce-spire-9870.herokuapp.com/">linkki</a>
+    
+    <div ng-controller="MovieBaseGetController">
+    <ul>
+        <li ng-repeat="movie in movies">
+            <a ng-href="#/movies/{{movie.$id}}">{{movie.name}}</a>
+        </li>
+    </ul>
+        
+        <div ng-controller="MovieBaseAddController">
+            <h2>Lisää lefa</h2>
+            <input type="text" ng-model="newName">
+            <input type="text" ng-model="newDirector">
+            <input type="text" ng-model="newRelease">
+            <input type="text" ng-model="newDescription">
+            <button ng-click="addMovies()">AddMovie</button>
+        </div>
 
+    </div>
+        
     <!-- Hyödyllisiä kirjastoja -->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
