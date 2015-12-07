@@ -1,5 +1,5 @@
 // Toteuta moduulisi tänne
-var MovieBase = angular.module('MyApp', ['firebase']);
+var MovieBase = angular.module('MovieBase', ['firebase']);
 
 MovieBase.service('FirebaseService', function($firebaseArray){
   
