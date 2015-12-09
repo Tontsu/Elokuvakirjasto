@@ -11,17 +11,16 @@ MovieBase.service('FirebaseService', function($firebaseArray){
     }
     
     this.addMovies = function(movie){
-        movies.$add(data);
+        movies.$add(movie);
     }
 });
 
-MovieBase.Controller('MovieBaseGetController', function($scope, FirebaseService) {
+MovieBase.controller('MovieBaseGetController', function($scope, FirebaseService) {
     $scope.movies = FirebaseService.getMovies();
-    
     
 });
 
-MovieBase.Controller('MovieBaseAddController', function($scope, FirebaseService) {
+MovieBase.controller('MovieBaseAddController', function($scope, FirebaseService) {
     $scope.addMovies = function () {
             FirebaseService.addMovies({
                 name: $scope.newName,
@@ -31,6 +30,4 @@ MovieBase.Controller('MovieBaseAddController', function($scope, FirebaseService)
             });
         
     }
-    
-    
 });
