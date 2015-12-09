@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<form name="addForm">
+        <div ng-controller="MovieBaseAddController">
+            <h2>Lisää lefa</h2>
+            <div>
+                <label>Nimi</label>
+            <input type="text" name = "newName" ng-model="newName" required ng-minlength="1">
+            <div ng-show="addForm.newName.$invalid">
+                    Leffan nimi ei saa olla tyhjä
+            </div>
+            </div>
+            <div>
+                <label>Ohjaaja</label>
+            <input type="text" name="newDirector" ng-model="newDirector" required ng-minlength="2">
+            <div ng-show="addForm.newDirector.$invalid">
+                    Minimi kaksi merkkiä
+            </div>
+            </div>
+            <div>
+                <label>Vuosiluku</label>
+            <input type="text" name="newRelease" ng-model="newRelease" required ng-minlength="4" ng-pattern="/^[0-9]*$/">
+            <div ng-show="addForm.newRelease.$invalid && addForm.newRelease.$dirty">
+                    Ei validi vuosiluku
+            </div>
+            </div>
+            <div>
+                <label>Kuvaus</label>
+            <input type="text" name="newDescription" ng-model="newDescription" required ng-minlength="1">
+            <div ng-show="addForm.newDescription.$invalid">
+                    Kuvaus ei saa olla tyhjä
+            </div>
+            </div>
+            <button ng-click="addMovies()" ng-disabled="addForm.$invalid">AddMovie</button>
+        </div>
+    </form>

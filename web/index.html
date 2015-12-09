@@ -8,36 +8,12 @@
   </head>
   <body ng-app="MovieBase">
     <h1>Hello, world!</h1>
+   
     
-    <div ng-controller="MovieBaseGetController">
-    <ul>
-        <li ng-repeat="movie in movies">
-            <a ng-href="#/movies/{{movie.$id}}">{{movie.name}}</a>
-        </li>
-    </ul>
-    <form name="addForm">
-        <div ng-controller="MovieBaseAddController">
-            <h2>Lisää lefa</h2>
-            <input type="text" name = "newName" placeholder="Name" ng-model="newName" required ng-minlength="1">
-            <div ng-show="addForm.newName.$invalid">
-                    Leffan nimi on tyhjä
-            </div>
-            <input type="text" name="newDirector" placeholder="Director" ng-model="newDirector" required ng-minlength="2">
-            <div ng-show="addForm.newDirector.$invalid">
-                    Minimi kaksi merkkiä
-            </div>
-            <input type="text" name="newRelease" placeholder="Release" ng-model="newRelease" ng-pattern="/[0-9]/">
-            <div ng-show="addForm.newRelease.$invalid && addform.newRelease.$dirty">
-                    Ei validi vuosiluku
-            </div>
-            <input type="text" name="newDescription" placeholder="Description" ng-model="newDescription" required ng-minlength="2">
-            <div ng-show="addForm.newDescription.$invalid">
-                    Kuvaus ei saa olla tyhjä
-            </div>
-            <button ng-click="addMovies()" ng-disabled="addform.$invalid">AddMovie</button>
-        </div>
-    </form>
-    </div>
+         <div id="content-box">
+            <div ng-view></div>
+         </div>
+  
         
         
     <!-- Hyödyllisiä kirjastoja -->

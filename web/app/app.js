@@ -1,7 +1,7 @@
 // Toteuta moduulisi tänne
-var MovieBase = angular.module('MovieBase', ['firebase']);
+var MovieBase = angular.module('MovieBase', ['firebase', 'ngRoute']);
 
-MovieBase.service('FirebaseService', function($firebaseArray){
+MovieBase.service('FirebaseService', function($location, $firebaseArray){
   
     var firebaseRef = new Firebase('https://popping-torch-6063.firebaseio.com/movies');
     var movies = $firebaseArray(firebaseRef);
@@ -12,7 +12,23 @@ MovieBase.service('FirebaseService', function($firebaseArray){
     
     this.addMovies = function(movie){
         movies.$add(movie);
+        $location.path('/movies');
     }
+});
+
+MovieBase.config(function($routeProvider) {
+   $routeProvider
+    .when('/movies', {
+      controller: 'MovieBaseGetController',
+      templateUrl: 'movies.html'
+    })
+    .when('/movies/new', {
+      controller: 'MovieBaseAddController',
+      templateUrl: 'moviesadd.html'
+    })
+    .otherwise({
+      redirectTo: '/movies'
+    }); 
 });
 
 MovieBase.controller('MovieBaseGetController', function($scope, FirebaseService) {
