@@ -27,7 +27,7 @@
                     Minimi kaksi merkkiä
             </div>
             <input type="text" name="newRelease" placeholder="Release" ng-model="newRelease" ng-pattern="/[0-9]/">
-            <div ng-show="addForm.newRelease.$invalid">
+            <div ng-show="addForm.newRelease.$invalid && addform.newRelease.$dirty">
                     Ei validi vuosiluku
             </div>
             <input type="text" name="newDescription" placeholder="Description" ng-model="newDescription" required ng-minlength="2">
